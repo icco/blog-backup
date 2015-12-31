@@ -7,11 +7,16 @@ require "json"
 
 open("https://writing.natwelch.com/posts.md.json") do |res|
   data = JSON.parse(res.read)
-  data.each do |u|
-    filename = "posts/#{File.basename(u)}"
-    File.open(filename, 'w') do |f|
-      doc = URI("https://writing.natwelch.com#{u.sub(".", "/")}").read
-      f.write(doc)
+
+  threads = data.map do |u|
+    Thread.new do
+      filename = "posts/#{File.basename(u)}"
+      File.open(filename, 'w') do |f|
+        doc = URI("https://writing.natwelch.com#{u.sub(".", "/")}").read
+        f.write(doc)
+      end
     end
   end
+
+  threads.each(&:join)
 end
