@@ -6,7 +6,12 @@ require "open-uri"
 require "json"
 
 open("https://writing.natwelch.com/posts.md.json") do |res|
-  p res
   data = JSON.parse(res.read)
-  p data
+  data.each do |u|
+    filename = "posts/#{File.basename(u)}"
+    File.open(filename, 'w') do |f|
+      doc = URI("https://writing.natwelch.com#{u.sub(".", "/")}").read
+      f.write(doc)
+    end
+  end
 end
