@@ -6,14 +6,20 @@ require "open-uri"
 require "json"
 
 open("https://writing.natwelch.com/posts.md.json") do |res|
-  data = JSON.parse(res.read)
 
-  threads = data.map do |u|
+  queue = Queue.new
+  urls = JSON.parse(res.read)
+  urls.map { |url| queue << url }
+
+  threads = 10.times.map do
     Thread.new do
-      filename = "posts/#{File.basename(u)}"
-      File.open(filename, 'w') do |f|
-        doc = URI("https://writing.natwelch.com#{u.sub(".", "/")}").read
-        f.write(doc)
+      while !queue.empty? && u = queue.pop
+        filename = "posts/#{File.basename(u)}"
+        open("https://writing.natwelch.com#{u.sub(".", "/")}") do |r|
+          File.open(filename, 'w') do |f|
+            f.write(r.read)
+          end
+        end
       end
     end
   end
