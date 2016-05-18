@@ -5,6 +5,9 @@
 require "open-uri"
 require "json"
 
+#CRLF_REGEX = Regexp.new("(?<!\r)\n|\r(?!\n)")
+CRLF_REGEX = /\r\n?/
+
 open("https://writing.natwelch.com/posts.md.json") do |res|
 
   queue = Queue.new
@@ -17,7 +20,7 @@ open("https://writing.natwelch.com/posts.md.json") do |res|
         filename = "posts/#{File.basename(u)}"
         open("https://writing.natwelch.com#{u.sub(".", "/")}") do |r|
           File.open(filename, 'w') do |f|
-            f.write(r.read)
+            f.write(r.read.gsub(CRLF_REGEX, "\n"))
           end
         end
       end
