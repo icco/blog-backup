@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    front_matter_parser (0.1.0)
+    front_matter_parser (0.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  front_matter_parser
+  front_matter_parser (< 0.1.0)
 
 RUBY VERSION
    ruby 2.4.0p0
