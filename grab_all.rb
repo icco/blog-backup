@@ -20,8 +20,7 @@ open("https://writing.natwelch.com/posts.md.json") do |res|
       while !queue.empty? && u = queue.pop
         open("https://writing.natwelch.com#{u.sub(".", "/")}") do |r|
           body = r.read.gsub(CRLF_REGEX, "\n")
-          prsr = FrontMatterParser::Parser.new
-          fmp = prsr.call(body)
+          fmp = FrontMatterParser.parse(body)
           fm = fmp.front_matter
           p fm
           dt = Time.parse(fm["datetime"])
