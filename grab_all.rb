@@ -1,10 +1,12 @@
 #! /usr/bin/env ruby
+#
+# This downloads all of the files into a directory called _posts.
 
-# This downloads all of the files into a directory called posts.
-
+require "rubygems"
+require "bundler"
+Bundler.require(:default)
 require "open-uri"
 require "json"
-require "front_matter_parser"
 require "time"
 
 CRLF_REGEX = /\r\n?/
@@ -25,7 +27,7 @@ open("https://writing.natwelch.com/posts.md.json") do |res|
           p fm
           dt = Time.parse(fm["datetime"])
           filename = File.join "_posts/", "#{dt.strftime "%Y-%m-%d"}-#{File.basename(u)}"
-          File.open(filename, 'w') do |f|
+          File.open(filename, "w") do |f|
             f.write(body)
           end
         end
