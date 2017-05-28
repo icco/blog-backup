@@ -12,7 +12,7 @@ source $RUBY
 git pull
 bundle update
 git ci Gemfile* -m 'bundle update'
-rm _posts/*.md
+# rm _posts/*.md
 ./grab_all.rb
 git add _posts
 git ci -m "Backing up posts"
