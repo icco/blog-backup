@@ -20,6 +20,7 @@ open("https://natwelch-writing.appspot.com/posts.md.json") do |res|
   threads = 10.times.map do
     Thread.new do
       while !queue.empty? && u = queue.pop
+        p u
         open("https://natwelch-writing.appspot.com#{u.sub(".", "/")}") do |r|
           body = r.read.gsub(CRLF_REGEX, "\n")
           prsr = FrontMatterParser::Parser.new(:md)
