@@ -18,6 +18,7 @@ GEM
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     minitest (5.10.3)
+    pg (0.21.0)
     thread_safe (0.3.6)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
@@ -28,6 +29,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   front_matter_parser
+  pg
 
 RUBY VERSION
    ruby 2.4.0p0
