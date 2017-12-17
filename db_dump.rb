@@ -30,7 +30,7 @@ Dir.glob('_posts/*.md') do |f|
   p.content = fmp.content
   p.date = dt
   p.draft = fm["draft"]
-  p.created_at = Time.now
+  p.created_at ||= Time.now
   p.modified_at = Time.now
   p.save
 end
