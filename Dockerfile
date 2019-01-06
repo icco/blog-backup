@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-alpine
+FROM ruby:2.6.0-alpine as builder
 
 RUN bundle config --global frozen 1
 
@@ -28,3 +28,8 @@ RUN bundle install
 COPY . .
 RUN bundle exec jekyll build
 
+FROM nginx
+
+EXPOSE 80
+
+COPY --from=builder /usr/src/app/_site /usr/share/nginx/html
