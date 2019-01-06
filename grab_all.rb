@@ -33,7 +33,7 @@ Query = client.parse <<-'GRAPHQL'
 GRAPHQL
 
 res = client.query(Query)
-res.data.all_posts.each do |post|
+res.data.posts.each do |post|
   dt = Time.parse(post.datetime)
   filename = File.join "_posts/", "#{dt.strftime "%Y-%m-%d"}-#{post.id}.md"
   p filename
