@@ -22,7 +22,7 @@ schema = GraphQL::Client.load_schema(http)
 client = GraphQL::Client.new(schema: schema, execute: http)
 Query = client.parse <<-'GRAPHQL'
   query {
-    posts(limit: 1000, offset: 0) {
+    posts(input: {limit: 1000, offset: 0}) {
       id
       title
       content
