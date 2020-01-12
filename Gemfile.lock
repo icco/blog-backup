@@ -65,7 +65,7 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    minitest (5.13.0)
+    minitest (5.14.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     pg (1.2.2)
