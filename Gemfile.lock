@@ -23,7 +23,7 @@ GEM
     ffi (1.13.1)
     forwardable-extended (2.6.0)
     front_matter_parser (0.2.1)
-    graphql (1.11.5)
+    graphql (1.11.6)
     graphql-client (0.16.0)
       activesupport (>= 3.0)
       graphql (~> 1.8)
@@ -85,7 +85,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
