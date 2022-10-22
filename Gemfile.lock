@@ -23,7 +23,7 @@ GEM
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     front_matter_parser (1.0.1)
-    graphql (2.0.14)
+    graphql (2.0.15)
     graphql-client (0.18.0)
       activesupport (>= 3.0)
       graphql
