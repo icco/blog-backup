@@ -49,7 +49,7 @@ GRAPHQL
 resPosts = client.query(Query)
 resDrafts = client.query(Drafts)
 
-posts = resPosts.data.posts + res.data.drafts
+posts = resPosts.data.posts + resDrafts.data.drafts
 
 posts.each do |post|
   dt = Time.parse(post.datetime)
