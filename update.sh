@@ -1,6 +1,6 @@
 #! /bin/bash
 
-RUBY=~/.rvm/environments/ruby-2.6.2
+RUBY=~/.rvm/environments/ruby-3.2.2
 
 if [[ ! -f $RUBY ]] ; then
   echo "File $RUBY is not there, aborting."
