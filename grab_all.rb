@@ -15,7 +15,10 @@ CRLF_REGEX = /\r\n?/
 
 http = GraphQL::Client::HTTP.new("https://graphql.natwelch.com/graphql") do
   def headers(context)
-    { "User-Agent": "blog-backup" }
+    {
+      "User-Agent": "blog-backup",
+      "X-API-AUTH": ENV["GQL_TOKEN"]
+    }
   end
 end
 schema = GraphQL::Client.load_schema(http)
@@ -31,9 +34,24 @@ Query = client.parse <<-'GRAPHQL'
     }
   }
 GRAPHQL
+Drafts = client.parse <<-'GRAPHQL'
+  query {
+    drafts(input: {limit: 1000, offset: 0}) {
+      id
+      title
+      content
+      datetime
+      draft
+    }
+  }
+GRAPHQL
 
-res = client.query(Query)
-res.data.posts.each do |post|
+resPosts = client.query(Query)
+resDrafts = client.query(Drafts)
+
+posts = resPosts.data.posts + res.data.drafts
+
+posts.each do |post|
   dt = Time.parse(post.datetime)
   filename = File.join "_posts/", "#{dt.strftime "%Y-%m-%d"}-#{post.id}.md"
   p filename
