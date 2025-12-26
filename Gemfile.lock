@@ -37,7 +37,8 @@ GEM
     forwardable-extended (2.6.0)
     front_matter_parser (1.0.1)
     google-protobuf (3.25.5)
-    graphql (2.0.26)
+    graphql (2.0.32)
+      base64
     graphql-client (0.18.0)
       activesupport (>= 3.0)
       graphql
