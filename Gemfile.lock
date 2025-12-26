@@ -36,7 +36,7 @@ GEM
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     front_matter_parser (1.0.1)
-    google-protobuf (3.24.2)
+    google-protobuf (3.25.5)
     graphql (2.0.26)
     graphql-client (0.18.0)
       activesupport (>= 3.0)
