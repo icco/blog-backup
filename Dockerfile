@@ -1,4 +1,4 @@
-FROM ruby:2.6.2-alpine as builder
+FROM ruby:3.4.12-alpine as builder
 
 RUN bundle config --global frozen 1
 
